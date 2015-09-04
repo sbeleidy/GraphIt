@@ -1,0 +1,46 @@
+// From beleidyBarGraph directory run as you edit this file
+// sass --watch scss:css --style compressed
+
+// Colors
+$barcolor 			: #0288D1; 			// bars of the graph
+$barHoverColor 		: #FF5722;			// bars when hovered over
+$textColor 			: #FFFFFF;			// text of the graph
+$axisColor 			: #212121;			// axes' lines
+$axisTextColor		: #212121;			// axes' text color
+
+// Label
+$labelFont			: sans-serif;
+$labelFontSize		: 1rem;
+$labelPosition		: middle;
+
+// Axis Labels
+$axisFont			: $labelFont;
+$axisFontSize		: 1rem;
+
+
+.bar {
+  fill: $barcolor;
+}
+
+.bar:hover {
+  fill: $barHoverColor;
+}
+
+.axis {
+  font: $axisFontSize $axisFont;
+
+  path, line {
+  	fill: none;
+  	stroke: $axisColor;
+  	shape-rendering: crispEdges;
+  }
+}
+
+.tick {
+	fill: $axisTextColor;
+}
+
+.x.axis path {
+  display: none;
+}
+
