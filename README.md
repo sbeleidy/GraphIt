@@ -56,7 +56,7 @@ See [index.html](index.html) file for an example.
 #### Axis Labels
 |Variable Name|Default| What it affects |
 |-------------|-------|-----------------|
-|$axisFont|$labelFont|The axis label fonts|
+|$axisFont|sans-serif|The axis label fonts|
 |$axisFontSize|1rem|The axis label font sizes|
 
 ## What index.html looks like
