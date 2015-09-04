@@ -59,5 +59,8 @@ See [index.html](index.html) file for an example.
 |$axisFont|$labelFont|The axis label fonts|
 |$axisFontSize|1rem|The axis label font sizes|
 
+## What index.html looks like
+
+![index.html](index.png)
 
 
