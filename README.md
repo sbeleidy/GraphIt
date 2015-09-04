@@ -50,7 +50,6 @@ See [index.html](index.html) file for an example.
 |-------------|-------|-----------------|
 |$barcolor| #0288D1|The bars of the graph|
 |$barHoverColor|#FF5722|The bars when hovered over|
-|$textColor|#FFFFFF|The text of the graph|
 |$axisColor|#212121|The axes' lines|
 |$axisTextColor|#212121|The axes' text color|
 
