@@ -4,9 +4,13 @@ Purpose: Allow anyone working on a project with SCSS to easily integrate a bar g
 
 ## How does this work?
 
-```barGraphIt("data.csv");```
+```
+barGraphIt("data.csv");
+```
 
-This will generate a simple bar graph with the default values at the body tag. The following are optional values that can be passed to the barGraphIt() function in a JSON variable as the second parameter. Ex: `barGraphIt("data.csv", {"where": "#myChart"});`
+This will generate a simple bar graph with the default values at the body tag. The following are optional values that can be passed to the barGraphIt() function in a JSON variable as the second parameter. 
+
+Ex: `barGraphIt("data.csv", {"where": "#myChart"});`
 
 |Key|Type|Default| What it represents |
 |---|----|-------|-------------------|
