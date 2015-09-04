@@ -43,4 +43,22 @@ For ex:
 
 See [index.html](index.html) file for an example.
 
+## What SCSS variables are there?
+
+####Colors
+|Variable Name|Default| What it affects |
+|-------------|-------|-----------------|
+|$barcolor| #0288D1|The bars of the graph|
+|$barHoverColor|#FF5722|The bars when hovered over|
+|$textColor|#FFFFFF|The text of the graph|
+|$axisColor|#212121|The axes' lines|
+|$axisTextColor|#212121|The axes' text color|
+
+#### Axis Labels
+|Variable Name|Default| What it affects |
+|-------------|-------|-----------------|
+|$axisFont|$labelFont|The axis label fonts|
+|$axisFontSize|1rem|The axis label font sizes|
+
+
 
