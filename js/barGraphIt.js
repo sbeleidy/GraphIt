@@ -20,7 +20,6 @@
  */
 function barGraphIt(dataPath, vals){
 	// Default values 
-	console.log(vals);
 	var vals = typeof vals !== 'undefined' ? vals : {},
 		w = typeof vals["w"] !== 'undefined' ? vals["w"] : 500,
 		h = typeof vals["h"] !== 'undefined' ? vals["h"] : 500,
@@ -32,7 +31,6 @@ function barGraphIt(dataPath, vals){
 		createGrid = typeof vals["createGrid"] !== 'undefined' ? vals["createGrid"] : true,
 		gridColor = typeof vals["gridColor"] !== 'undefined' ? vals["gridColor"] : "grey";
 
-	console.log(where);
 	if (dataValuesLessThanOne){
 		var yAxis = "%";
 	} else{
@@ -71,11 +69,13 @@ function barGraphIt(dataPath, vals){
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// Get the data and start using it
-	d3.csv(dataPath, type, function(error, data) {
+	d3.csv(dataPath, function(error, data) {
 		if (error) throw error;
 
-		x.domain(data.map(function(d) { return d.letter; }));
-		y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+		var headerNames = d3.keys(data[0]);
+
+		x.domain(data.map(function(d) { return d[headerNames[0]]; }));
+		y.domain([0, d3.max(data, function(d) { return d[headerNames[1]]; })]);
 
 		svg.append("g")
 	    	.attr("class", "x axis")
@@ -97,10 +97,10 @@ function barGraphIt(dataPath, vals){
 	    		.data(data)
 	    	.enter().append("rect")
 	    		.attr("class", "bar")
-	    		.attr("x", function(d) { return x(d.letter); })
+	    		.attr("x", function(d) { return x(d[headerNames[0]]); })
 	    		.attr("width", x.rangeBand())
-	    		.attr("y", function(d) { return y(d.frequency); })
-	    		.attr("height", function(d) { return height - y(d.frequency); });
+	    		.attr("y", function(d) { return y(d[headerNames[1]]); })
+	    		.attr("height", function(d) { return height - y(d[headerNames[1]]); });
 
 		// Create a horizontal grid
 		if (createGrid) {
@@ -120,11 +120,4 @@ function barGraphIt(dataPath, vals){
         			});
 		}
 	});
-}
-
-
-
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
 }
