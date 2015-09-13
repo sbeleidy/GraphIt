@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>GraphIt</title>
-	<link rel="stylesheet" type="text/css" href="/css/barGraphIt.css">
+	<link rel="stylesheet" type="text/css" href="/css/graphIt.css">
 </head>
 <body>
 <style type="text/css">
@@ -61,8 +61,11 @@ $gridOpacity  : 0.1;
 </pre>
 	</code>
 
+<p>And here, let's show a scatter plot:</p>
+<div class="myScatter"></div>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-	<script src="/js/barGraphIt.js"></script>
+	<script src="/js/graphIt.js"></script>
 	<script>
 
 var dataPath = "bar.csv",
@@ -79,6 +82,8 @@ var dataPath = "bar.csv",
 
 barGraphIt("bar.csv", {"where": "div.simple"});
 barGraphIt(dataPath, vals);
+
+scatterGraphIt("scatter.csv", {"where": "div.myScatter"});
 
 </script>
 

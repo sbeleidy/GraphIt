@@ -1,34 +1,3 @@
-// From GraphIt directory run as you edit this file
-// sass --watch scss:css --style compressed
-
-// Color
-$axisColor 			: #212121;			// axes' lines
-$dotColor			: #212121;			// dot color
-$axisTextColor		: #212121;			// axes' text color
-
-// Axis Labels
-$axisFont			: sans-serif;
-$axisFontSize		: 0.8rem;
-
-// Grid
-$gridColor    : $axisColor;
-$gridOpacity  : 0.1;
-$gridIsDisplayed : true;
-
-// Tooltip
-$tooltipFont		:sans-serif;
-$tooltipFontSize	: 0.7rem;
-$tooltipWidth		: 200px;
-$tooltipHeight		: 28px;
-$tooltipBorder		: 0;
-$tooltipBackground	: 0;
-
-// Legend
-$legendFont		:sans-serif;
-$legendFontSize	: 0.8rem;
-$legendIsDisplayed	: true;
-$legendOpacity		: 0.6;
-
 .axis {
 
 	font: $axisFontSize $axisFont;

@@ -1,0 +1,29 @@
+// Color
+$barcolor 			: #0288D1; 			// bars of the graph
+$barHoverColor 		: #FF5722;			// bars when hovered over
+$dotColor			: #212121;			// dot color
+$axisColor 			: #212121;			// axes' lines
+$axisTextColor		: #212121;			// axes' text color
+
+// Axis Labels
+$axisFont			: sans-serif;
+$axisFontSize		: 0.8rem;
+
+// Grid
+$gridColor    : $axisColor;
+$gridOpacity  : 0.1;
+$gridIsDisplayed : true;
+
+// Tooltip
+$tooltipFont		:sans-serif;
+$tooltipFontSize	: 0.7rem;
+$tooltipWidth		: 200px;
+$tooltipHeight		: 28px;
+$tooltipBorder		: 0;
+$tooltipBackground	: 0;
+
+// Legend
+$legendFont		:sans-serif;
+$legendFontSize	: 0.8rem;
+$legendIsDisplayed	: true;
+$legendOpacity		: 0.6;
