@@ -59,6 +59,11 @@ function barGraphIt(dataPath, vals){
 	    .orient("left")
 	    .ticks(tickCount, "%");
 
+	// add the tooltip area to the webpage
+		var tooltip = d3.select(where).append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 0);
+
 	// Select svg 
 	var svg = d3.select(where).append("svg")
 	    .attr("width", width + margin.left + margin.right)
@@ -98,7 +103,20 @@ function barGraphIt(dataPath, vals){
 	    		.attr("x", function(d) { return x(d[headerNames[0]]); })
 	    		.attr("width", x.rangeBand())
 	    		.attr("y", function(d) { return y(d[headerNames[1]]); })
-	    		.attr("height", function(d) { return height - y(d[headerNames[1]]); });
+	    		.attr("height", function(d) { return height - y(d[headerNames[1]]); })
+	    		.on("mouseover", function(d) {
+						tooltip.transition()
+								 .duration(200)
+								 .style("opacity", .9);
+						tooltip.html(d[headerNames[0]] + "<br/>" + d[headerNames[1]])
+								 .style("left", (d3.event.pageX + 5) + "px")
+								 .style("top", (d3.event.pageY - 28) + "px");
+				})
+				.on("mouseout", function(d) {
+						tooltip.transition()
+								 .duration(500)
+								 .style("opacity", 0);
+				});
 
 		// Create a grid
 		if (createGrid) {

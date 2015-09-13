@@ -15,6 +15,15 @@ $axisFontSize		: 1rem;
 $gridColor    : $axisColor;
 $gridOpacity  : 0.1;
 
+// Tooltip
+$tooltipFont    :sans-serif;
+$tooltipFontSize  : 0.7rem;
+$tooltipWidth   : 4rem;
+$tooltipHeight    : 2rem;
+$tooltipBorder    : 0;
+$tooltipBackground  : 0;
+
+
 .bar {
   fill: $barcolor;
 }
@@ -48,4 +57,14 @@ $gridOpacity  : 0.1;
   path {
       stroke-width: 0;
     }
+}
+
+.tooltip {
+  font: $tooltipFontSize $tooltipFont;
+  position: absolute;
+  width: $tooltipWidth;
+  height: $tooltipHeight;
+  pointer-events: none;
+  border: $tooltipBorder;
+  background: $tooltipBackground;
 }
