@@ -1,0 +1,77 @@
+// From GraphIt directory run as you edit this file
+// sass --watch scss:css --style compressed
+
+// Color
+$axisColor 			: #212121;			// axes' lines
+$dotColor			: #212121;			// dot color
+$axisTextColor		: #212121;			// axes' text color
+
+// Axis Labels
+$axisFont			: sans-serif;
+$axisFontSize		: 0.8rem;
+
+// Grid
+$gridColor    : $axisColor;
+$gridOpacity  : 0.1;
+
+// Tooltip
+$tooltipFont		:sans-serif;
+$tooltipFontSize	: 0.7rem;
+$tooltipWidth		: 200px;
+$tooltipHeight		: 28px;
+$tooltipBorder		: 0;
+$tooltipBackground	: 0;
+
+// Legend
+$legendFont		:sans-serif;
+$legendFontSize	: 0.8rem;
+$legendIsDisplayed	: true;
+$legendOpacity		: 0.6;
+
+.axis {
+
+	font: $axisFontSize $axisFont;
+
+	path, line {
+		fill: none;
+		stroke: $axisColor;
+		shape-rendering: crispEdges;
+	}
+}
+
+.tick {
+	fill: $axisTextColor;
+}
+
+.dot {
+	stroke: $dotColor;
+}
+
+.tooltip {
+	font: $tooltipFontSize $tooltipFont;
+	position: absolute;
+	width: $tooltipWidth;
+	height: $tooltipHeight;
+	pointer-events: none;
+	border: $tooltipBorder;
+	background: $tooltipBackground;
+}
+
+$displayLegend: if($legendIsDisplayed, 1, none);
+
+.legend {
+	font: $legendFontSize $legendFont;
+	display: $displayLegend;
+	opacity: $legendOpacity;
+}
+
+
+.grid {
+    stroke: $gridColor;
+    opacity: $gridOpacity;
+  
+  path {
+      stroke-width: 0;
+    }
+}
+
