@@ -11,6 +11,9 @@ $axisTextColor		: #212121;			// axes' text color
 $axisFont			: sans-serif;
 $axisFontSize		: 1rem;
 
+// Grid
+$gridColor    : $axisColor;
+$gridOpacity  : 0.1;
 
 .bar {
   fill: $barcolor;
@@ -38,3 +41,11 @@ $axisFontSize		: 1rem;
   display: none;
 }
 
+.grid {
+    stroke: $gridColor;
+    opacity: $gridOpacity;
+  
+  path {
+      stroke-width: 0;
+    }
+}

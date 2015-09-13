@@ -14,7 +14,6 @@
  * 		{string}	"Values"		yLabel = the label for the y axis
  * 		{int}		10				tickCount = the number of ticks on the y axis and grid if specified (x axis is defined by the data)
  * 		{boolean}	true			createGrid = whether there shall be a horizontal grid on top of the graph
- * 		{string}	"grey"			gridColor = the color of the grid lines if they are to appear (Unfortunately I haven't been able to access this using CSS)
  * ]
  * @return {NaN}
  */
@@ -28,8 +27,7 @@ function barGraphIt(dataPath, vals){
 		margins = typeof vals["margins"] !== 'undefined' ? vals["margins"] : [20,20,20,40],
 		yLabel = typeof vals["yLabel"] !== 'undefined' ? vals["yLabel"] : "Values",
 		tickCount = typeof vals["tickCount"] !== 'undefined' ? vals["tickCount"] : 10,
-		createGrid = typeof vals["createGrid"] !== 'undefined' ? vals["createGrid"] : true,
-		gridColor = typeof vals["gridColor"] !== 'undefined' ? vals["gridColor"] : "grey";
+		createGrid = typeof vals["createGrid"] !== 'undefined' ? vals["createGrid"] : true;
 
 	if (dataValuesLessThanOne){
 		var yAxis = "%";
@@ -102,22 +100,24 @@ function barGraphIt(dataPath, vals){
 	    		.attr("y", function(d) { return y(d[headerNames[1]]); })
 	    		.attr("height", function(d) { return height - y(d[headerNames[1]]); });
 
-		// Create a horizontal grid
+		// Create a grid
 		if (createGrid) {
-			svg.selectAll("line.horizontalGrid").data(y.ticks(tickCount)).enter()
-    			.append("line")
-        			.attr(
-        			{
-            			"class":"horizontalGrid",
-            			"x1" : margin.right,
-            			"x2" : width,
-            			"y1" : function(d){ return y(d);},
-            			"y2" : function(d){ return y(d);},
-            			"fill" : "none",
-            			"shape-rendering" : "crispEdges",
-            			"stroke" : gridColor,
-            			"stroke-width" : "1px"
-        			});
-		}
+
+				// svg.append("g")         
+    //     			.attr("class", "grid")
+			 //        .attr("transform", "translate(0," + height + ")")
+			 //        .call(xAxis
+			 //            .tickSize(-height, 0, 0)
+			 //            .tickFormat("")
+			 //        )
+
+			    svg.append("g")         
+			        .attr("class", "grid")
+			        .call(yAxis
+			            .tickSize(-width, 0, 0)
+			            .tickFormat("")
+			        )
+							
+			}
 	});
 }
