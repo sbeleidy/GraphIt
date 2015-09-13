@@ -13,6 +13,7 @@ $axisFontSize		: 0.8rem;
 // Grid
 $gridColor    : $axisColor;
 $gridOpacity  : 0.1;
+$gridIsDisplayed : true;
 
 // Tooltip
 $tooltipFont		:sans-serif;
@@ -66,9 +67,12 @@ $displayLegend: if($legendIsDisplayed, 1, none);
 }
 
 
+$displayGrid: if($gridIsDisplayed, 1, none);
+
 .grid {
     stroke: $gridColor;
     opacity: $gridOpacity;
+    display: $displayGrid;
   
   path {
       stroke-width: 0;

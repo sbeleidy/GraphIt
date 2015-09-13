@@ -6,8 +6,7 @@ function scatterGraphIt(dataPath, vals) {
 		where = typeof vals["where"] !== 'undefined' ? vals["where"] : "body",
 		margins = typeof vals["margins"] !== 'undefined' ? vals["margins"] : [20,20,30,40],
 		yLabel = typeof vals["yLabel"] !== 'undefined' ? vals["yLabel"] : "Values",
-		xLabel = typeof vals["xLabel"] !== 'undefined' ? vals["xLabel"] : "Items",
-		createGrid = typeof vals["createGrid"] !== 'undefined' ? vals["createGrid"] : true;
+		xLabel = typeof vals["xLabel"] !== 'undefined' ? vals["xLabel"] : "Items";
 
 
 	var margin = {top: margins[0], right: margins[1], bottom: margins[2], left: margins[3]},
@@ -91,24 +90,20 @@ function scatterGraphIt(dataPath, vals) {
 					.text(yLabel);
 
 			// Create a grid
-			if (createGrid) {
+			svg.append("g")         
+				.attr("class", "grid")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis
+					.tickSize(-height, 0, 0)
+					.tickFormat("")
+				)
 
-				svg.append("g")         
-					.attr("class", "grid")
-					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis
-						.tickSize(-height, 0, 0)
-						.tickFormat("")
-					)
-
-				svg.append("g")         
-					.attr("class", "grid")
-					.call(yAxis
-						.tickSize(-width, 0, 0)
-						.tickFormat("")
-					)
-							
-			}
+			svg.append("g")         
+				.attr("class", "grid")
+				.call(yAxis
+					.tickSize(-width, 0, 0)
+					.tickFormat("")
+				)
 
 			// draw dots
 			svg.selectAll(".dot")

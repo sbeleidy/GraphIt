@@ -26,8 +26,7 @@ function barGraphIt(dataPath, vals){
 		dataValuesLessThanOne = typeof vals["dataValuesLessThanOne"] !== 'undefined' ? vals["dataValuesLessThanOne"] : true,
 		margins = typeof vals["margins"] !== 'undefined' ? vals["margins"] : [20,20,20,40],
 		yLabel = typeof vals["yLabel"] !== 'undefined' ? vals["yLabel"] : "Values",
-		tickCount = typeof vals["tickCount"] !== 'undefined' ? vals["tickCount"] : 10,
-		createGrid = typeof vals["createGrid"] !== 'undefined' ? vals["createGrid"] : true;
+		tickCount = typeof vals["tickCount"] !== 'undefined' ? vals["tickCount"] : 10;
 
 	if (dataValuesLessThanOne){
 		var yAxis = "%";
@@ -37,27 +36,27 @@ function barGraphIt(dataPath, vals){
 
 	// Define margins
 	var margin = {top: margins[0], right: margins[1], bottom: margins[2], left: margins[3]},
-    width = w - margin.left - margin.right,
-    height = h - margin.top - margin.bottom;
+	width = w - margin.left - margin.right,
+	height = h - margin.top - margin.bottom;
 
-    // Define x bounds
+	// Define x bounds
 	var x = d3.scale.ordinal()
-	    .rangeRoundBands([0, width], .1);
+		.rangeRoundBands([0, width], .1);
 
 	// Define y bounds
 	var y = d3.scale.linear()
-	    .range([height, 0]);
+		.range([height, 0]);
 
 	// Define x axis and orientation
 	var xAxis = d3.svg.axis()
-	    .scale(x)
-	    .orient("bottom");
+		.scale(x)
+		.orient("bottom");
 
 	// Define y axis and orientation
 	var yAxis = d3.svg.axis()
-	    .scale(y)
-	    .orient("left")
-	    .ticks(tickCount, "%");
+		.scale(y)
+		.orient("left")
+		.ticks(tickCount, "%");
 
 	// add the tooltip area to the webpage
 		var tooltip = d3.select(where).append("div")
@@ -66,10 +65,10 @@ function barGraphIt(dataPath, vals){
 
 	// Select svg 
 	var svg = d3.select(where).append("svg")
-	    .attr("width", width + margin.left + margin.right)
-	    .attr("height", height + margin.top + margin.bottom)
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
 	  .append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// Get the data and start using it
 	d3.csv(dataPath, function(error, data) {
@@ -81,30 +80,30 @@ function barGraphIt(dataPath, vals){
 		y.domain([0, d3.max(data, function(d) { return d[headerNames[1]]; })]);
 
 		svg.append("g")
-	    	.attr("class", "x axis")
-	    	.attr("transform", "translate(0," + height + ")")
-	    	.call(xAxis);
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis);
 
 		svg.append("g")
-	    		.attr("class", "y axis")
-	    		.call(yAxis)
-	    	.append("text")
-	    		.attr("transform", "rotate(-90)")
-	    		.attr("y", 5)
-	    		.attr("dy", ".71em")
-	    		.style("text-anchor", "end")
-	    		.text(yLabel);
+				.attr("class", "y axis")
+				.call(yAxis)
+			.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 5)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text(yLabel);
 
 		// Add the bar graph
 		svg.selectAll(".bar")
-	    		.data(data)
-	    	.enter().append("rect")
-	    		.attr("class", "bar")
-	    		.attr("x", function(d) { return x(d[headerNames[0]]); })
-	    		.attr("width", x.rangeBand())
-	    		.attr("y", function(d) { return y(d[headerNames[1]]); })
-	    		.attr("height", function(d) { return height - y(d[headerNames[1]]); })
-	    		.on("mouseover", function(d) {
+				.data(data)
+			.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return x(d[headerNames[0]]); })
+				.attr("width", x.rangeBand())
+				.attr("y", function(d) { return y(d[headerNames[1]]); })
+				.attr("height", function(d) { return height - y(d[headerNames[1]]); })
+				.on("mouseover", function(d) {
 						tooltip.transition()
 								 .duration(200)
 								 .style("opacity", .9);
@@ -119,23 +118,19 @@ function barGraphIt(dataPath, vals){
 				});
 
 		// Create a grid
-		if (createGrid) {
+			// svg.append("g")         
+			// 	.attr("class", "grid")
+			// 	.attr("transform", "translate(0," + height + ")")
+			// 	.call(xAxis
+			// 		.tickSize(-height, 0, 0)
+			// 		.tickFormat("")
+			// 	)
 
-				// svg.append("g")         
-    //     			.attr("class", "grid")
-			 //        .attr("transform", "translate(0," + height + ")")
-			 //        .call(xAxis
-			 //            .tickSize(-height, 0, 0)
-			 //            .tickFormat("")
-			 //        )
-
-			    svg.append("g")         
-			        .attr("class", "grid")
-			        .call(yAxis
-			            .tickSize(-width, 0, 0)
-			            .tickFormat("")
-			        )
-							
-			}
+			svg.append("g")         
+				.attr("class", "grid")
+				.call(yAxis
+					.tickSize(-width, 0, 0)
+					.tickFormat("")
+				)
 	});
 }
