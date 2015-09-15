@@ -1,0 +1,33 @@
+{
+  "name": "GraphIt",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sbeleidy/GraphIt",
+  "authors": [
+    "Saad Elbeleidy <sbeleidy90@gmail.com>"
+  ],
+  "description": "Easily graph your data.",
+  "main": "js/graphIt.js, scss/graphIt.scss",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "graph",
+    "d3",
+    "bar",
+    "graph",
+    "scatter",
+    "plot"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "index.html"
+  ],
+  "dependencies": {
+    "d3": "~3.5.6"
+  }
+}
