@@ -30,7 +30,8 @@
     "bower_components",
     "test",
     "tests",
-    "index.html"
+    "index.html",
+    "*.csv"
   ],
   "dependencies": {
     "d3": "~3.5.6"
