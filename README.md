@@ -11,7 +11,7 @@ For more details about GraphIt please check the [wiki](https://github.com/sbelei
 
 ## Installation
 
-
+`bower install graphit`
 
 ## Features
 

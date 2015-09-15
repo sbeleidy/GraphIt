@@ -18,6 +18,11 @@
     "scatter",
     "plot"
   ],
+  "homepage": "https://github.com/sbeleidy/GraphIt/wiki",
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/sbeleidy/GraphIt"
+    },
   "license": "MIT",
   "ignore": [
     "**/.*",
