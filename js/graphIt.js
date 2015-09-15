@@ -3,9 +3,9 @@
 // Grids: arete from http://stackoverflow.com/questions/15580300/proper-way-to-draw-gridlines
 
 /**
- * Generates a bargraph with the desired color styling from beleidyBarGraph.scss
+ * Generates a bar graph
  * @param  {string} dataPath  - the path to the data.csv file
- * @param  {JSON} vals - optional values for creating the bar graph
+ * @param  {JSONObject} vals - optional values for creating the bar graph
  * [	{int}		500				w = width in px
  * 		{int} 		500				h = height in px
  * 		{string}	"body"			where = tag .class or #id where the graph should appear (useful in case of overriding CSS for multiple graphs)
@@ -13,9 +13,8 @@
  * 		{array}		[20,20,20,40]	margins = top, right, bottom, left margins
  * 		{string}	"Values"		yLabel = the label for the y axis
  * 		{int}		10				tickCount = the number of ticks on the y axis and grid if specified (x axis is defined by the data)
- * 		{boolean}	true			createGrid = whether there shall be a horizontal grid on top of the graph
  * ]
- * @return {NaN}
+ * @return {NaN}		displays the graph at the specified location
  */
 function barGraphIt(dataPath, vals){
 	// Default values 
@@ -136,7 +135,20 @@ function barGraphIt(dataPath, vals){
 }
 
 
-
+/**
+ * Generates a scatter plot
+ * @param  {string} dataPath The path to the data file
+ * @param  {JSONObject} vals - optional values for creating the bar graph
+ * [	{int}		500				w = width in px
+ * 		{int} 		500				h = height in px
+ * 		{string}	"body"			where = tag .class or #id where the graph should appear (useful in case of overriding CSS for multiple graphs)
+ * 		{array}		[20,20,30,40]	margins = top, right, bottom, left margins
+ * 		{string}	"Items"			xLabel = the label for the x axis
+* 		{string}	"Values"		yLabel = the label for the y axis
+ * 		
+ * ]
+ * @return {NaN}          displays the graph at the specified location
+ */
 function scatterGraphIt(dataPath, vals) {
 
 	var vals = typeof vals !== 'undefined' ? vals : {},
@@ -164,13 +176,13 @@ function scatterGraphIt(dataPath, vals) {
 		headerNames = d3.keys(data[0]);
 
 		// setup x 
-		var xValue = function(d) { return d[headerNames[3]];}, // data -> value
+		var xValue = function(d) { return d[headerNames[2]];}, // data -> value
 				xScale = d3.scale.linear().range([0, width]), // value -> display
 				xMap = function(d) { return xScale(xValue(d));}, // data -> display
 				xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 		// setup y
-		var yValue = function(d) { return d[headerNames[2]];}, // data -> value
+		var yValue = function(d) { return d[headerNames[3]];}, // data -> value
 				yScale = d3.scale.linear().range([height, 0]), // value -> display
 				yMap = function(d) { return yScale(yValue(d));}, // data -> display
 				yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -196,8 +208,8 @@ function scatterGraphIt(dataPath, vals) {
 
 			// change string (from CSV) into number format
 			data.forEach(function(d) {
-				d[headerNames[2]] = +d[headerNames[2]];
 				d[headerNames[3]] = +d[headerNames[3]];
+				d[headerNames[2]] = +d[headerNames[2]];
 			});
 
 			// don't want dots overlapping axis, so add in buffer to data domain
