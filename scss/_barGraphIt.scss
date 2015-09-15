@@ -37,6 +37,8 @@ $displayGrid: if($gridIsDisplayed, 1, none);
     }
 }
 
+$displayTooltip: if($tooltipIsDisplayed, 1, none);
+
 .tooltip {
   font: $tooltipFontSize $tooltipFont;
   position: absolute;
@@ -45,4 +47,5 @@ $displayGrid: if($gridIsDisplayed, 1, none);
   pointer-events: none;
   border: $tooltipBorder;
   background: $tooltipBackground;
+  display: $displayTooltip;
 }

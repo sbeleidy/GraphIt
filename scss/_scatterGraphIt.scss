@@ -17,6 +17,8 @@
 	stroke: $dotColor;
 }
 
+$displayTooltip: if($tooltipIsDisplayed, 1, none);
+
 .tooltip {
 	font: $tooltipFontSize $tooltipFont;
 	position: absolute;
@@ -25,6 +27,7 @@
 	pointer-events: none;
 	border: $tooltipBorder;
 	background: $tooltipBackground;
+	display: $displayTooltip;
 }
 
 $displayLegend: if($legendIsDisplayed, 1, none);
